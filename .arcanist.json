@@ -1,0 +1,25 @@
+{
+  "appRuntime": {
+    "kind": "web",
+    "runner": "docker",
+    "entry": {
+      "type": "compose",
+      "files": ["docker-compose.yml"],
+      "service": "vote"
+    },
+    "url": {
+      "hostPort": 8080,
+      "path": "/"
+    },
+    "ready": {
+      "path": "/",
+      "timeoutSeconds": 300
+    },
+    "open": {
+      "path": "/"
+    },
+    "e2e": {
+      "testCommand": "curl -fsS http://127.0.0.1:8080/ > /dev/null && echo 'vote page reachable'"
+    }
+  }
+}
